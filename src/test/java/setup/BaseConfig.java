@@ -44,8 +44,12 @@ public class BaseConfig {
             System.setProperty("webdriver.firefox.driver", obj.getProperty("firefox_driver"));
             driver = new FirefoxDriver();
         }*/
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        //System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+        //driver = new ChromeDriver();
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(BASE_URL);
