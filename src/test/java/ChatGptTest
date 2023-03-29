@@ -1,0 +1,20 @@
+package testSuite;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.*;
+import pageObjectRepository.WelcomePageRepository;
+import setup.BaseConfig;
+
+public class ChatGptTest extends BaseConfig {
+
+    @Test(description = "This test is to verify the Chat GPT login screen")
+    public void chatGptTest() {
+        driver.findElement(By.xpath("//button//div[text()='Log in']")).click();
+        driver.findElement(By.id("username")).sendKeys("test@gmail.com");
+        String s="test hello";
+        Assert.assertTrue(s.contains(("hello")));
+
+
+    }
+}
